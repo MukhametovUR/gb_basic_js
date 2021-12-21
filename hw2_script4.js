@@ -1,20 +1,20 @@
 'use strict';
 
-const sum = (a,b) =>{
+const sum = (a, b) => {
     return a + b;
 };
-const raznost = (a,b) =>{
+const deduction = (a, b) => {
     return a - b;
 };
-const proizv = (a,b) =>{
+const multipl = (a, b) => {
     return a * b;
 };
-const delenie = (a,b) =>{
+const div = (a, b) => {
     return a / b;
 };
 
-console.log(sum(6,2));
-console.log(raznost(6,2));
-console.log(proizv(6,2));
-console.log(delenie(6,2));
+console.log(sum(6, 2));
+console.log(deduction(6, 2));
+console.log(multipl(6, 2));
+console.log(div(6, 2));
 
