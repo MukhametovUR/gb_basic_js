@@ -12,53 +12,70 @@
     <script>
         'use strict';
         /*ES5*/
-        // function A(param1) {
-        //     this.param1 = param1;
-        // }
+        function Post(author, text, date) {
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+      
+        function AttachedPost(highlighted){
+            this.highlighted = false;
+        }
 
-        // A.prototype.show = function () {
-        //     alert(this.param1);
-        // }
-        // function B(param1, param2) {
-        //     A.call(this, param1);
-        //     this.param2 = param2
-        // }
+        Post.prototype.edit = function(){
+            this.text += ' movie Matrix-4';
+            console.log(this.author, this.text, this.date);
+        }
 
-        // B.prototype = Object.create(A.prototype);
-        // B.prototype.constructor = B;
+        Post.prototype.AttachedPost = function(){
+            this.highlighted = true;
+            console.log(this.author, this.text, this.date, this.highlighted);
+        }
 
-        // B.prototype.show2 = function () {
-        //     console.log(this.param2);
-        // }
-
-        // let bObj = new B('text1', 'text2');
-        // bObj.show2();
+        let Obj = new Post('Vachovsky', '', '26.12.2021');
+        Obj.edit();
+        Obj.AttachedPost();
 
 
         /*ES6*/
-        class A {
-            constructor(param1) {
-                this.param1 = param1;
+        class Post{
+            constructor(author, text, date) {
+            this.author = author;
+            this.text = text;
+            this.date = date;
             }
-            show() {
-                alert(this.param1);
+            show(){
+                console.log(this.author, this.text, this.date)
             }
-        }
-        class B extends A {
-            constructor(param1, param2) {
-                super(param1);
-                this.param2 = param2;
-            }
-            show2() {
-                console.log(this.param2);
+            edit(){
+                this.text += ' movie Matrix-4 ';
+                console.log(this.author, this.text, this.date)
 
             }
         }
 
-        let bObj = new B('текст1', 'текст2');
-        bObj.show();
-        bObj.show2();
+        class AttachedPost extends Post{
+            constructor(author, text, date,highlighted){
+                super(highlighted = false); 
+                this.author= author; 
+                this.text = text; 
+                this.date = date;               
+            }            
+    
+            showAttached(){
+                console.log(this.author, this.text, this.date,this.highlighted = true);
+            }
+        }
 
+        let Obj = new Post('Vachovsky', '', '26.12.2021');
+        Obj.show();
+        Obj.edit();
+
+        let a = new AttachedPost('Vachovsky', '', '26.12.2021');
+        a.showAttached();
+
+
+        
     </script>
 </body>
 

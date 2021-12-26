@@ -12,27 +12,32 @@
     <script>
         'use strict';
         /*ES5*/
-        // function A(param1) {
-        //     this.param1 = param1;
-        // }
+        function Product(name, price) {
+            this.name = name;
+            this.price = price;
+        }
 
-        // A.prototype.show = function () {
-        //     alert(this.param1);
-        // };
+        Product.prototype.make25PercentDiscount = function (price) {
+            this.price = this.price - this.price * 0.25;
+            console.log(this.name, this.price);
+        };
 
-        // let obj1 = new A('text1');
-        // obj1.show();
-        /*ES6*/
-        class A {
-            constructor(parap1) {
-                this.parap1 = parap1;
+        let obj1 = new Product('Product A - 25% = ','100');
+        obj1.make25PercentDiscount();
+         /*ES6*/
+        class Product {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+
             }
-            show() {
-                alert(this.parap1)
+            make25PercentDiscount() {
+                this.price = this.price - this.price * 0.25;
+                alert(this.name +  ' ' + this.price);
             };
         }
-        let obj1 = new A('text1');
-        obj1.show()
+        let obj1 = new Product('Product A - 25% = ',100);
+        obj1.make25PercentDiscount()
 
     </script>
 </body>
