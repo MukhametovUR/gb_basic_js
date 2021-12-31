@@ -24,11 +24,9 @@
     <script>
         let div = document.querySelector('div');
         div.addEventListener('click', function(event){
-            if (event.target){
                 let arr = event.target.attributes;
                 for(let i =0; i<arr.length; i++){
                     console.log(arr[i].localName);
-                }                
             }
         });
     </script>
