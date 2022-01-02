@@ -17,13 +17,14 @@
             this.price = price;
         }
 
-        Product.prototype.make25PercentDiscount = function (price) {
-            this.price = this.price - this.price * 0.25;
-            console.log(this.name, this.price);
-        };
+        Product.prototype.make25PercentDiscount = function(res){
+            res = this.price + this.price * 0.25;
+            console.log(this.name, res);
+        }
 
-        let obj1 = new Product('Product A - 25% = ','100');
-        obj1.make25PercentDiscount();
+        let result = new Product('Product',100);
+        result.make25PercentDiscount(); 
+
          /*ES6*/
         class Product {
             constructor(name, price) {
@@ -31,13 +32,13 @@
                 this.price = price;
 
             }
-            make25PercentDiscount() {
-                this.price = this.price - this.price * 0.25;
-                alert(this.name +  ' ' + this.price);
+            make25PercentDiscount(res) {
+                res = +this.price + this.price * 0.25;
+                console.log(this.name, res);
             };
         }
-        let obj1 = new Product('Product A - 25% = ',100);
-        obj1.make25PercentDiscount()
+        let result = new Product('Product',200);
+        result.make25PercentDiscount();
 
     </script>
 </body>

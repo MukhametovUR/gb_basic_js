@@ -11,71 +11,73 @@
 <body>
     <script>
         'use strict';
-        /*ES5*/
-        function Post(author, text, date) {
+        // /*ES5 1.1*/
+        function Post(author, text, date){
             this.author = author;
             this.text = text;
             this.date = date;
         }
-      
-        function AttachedPost(highlighted){
-            this.highlighted = false;
-        }
-
-        Post.prototype.edit = function(){
-            this.text += ' movie Matrix-4';
+        Post.prototype.edit = function(text){
+            this.text += ' long';
             console.log(this.author, this.text, this.date);
         }
+        let result = new Post('Lorem','a','text');
+        result.edit();
 
-        Post.prototype.AttachedPost = function(){
+        /*1.2*/ 
+        function AttachedPost(author, text, date, highlighted){
+            Post.call(this, author, text, date);
+            this.highlighted = false;
+            console.log('highlighted = ' + this.highlighted);
+
+        }
+        
+        AttachedPost.prototype = Object.create(Post.prototype);
+        AttachedPost.prototype.constructor = AttachedPost;
+
+        AttachedPost.prototype.makeTextHighlighted = function(highlighted){
             this.highlighted = true;
-            console.log(this.author, this.text, this.date, this.highlighted);
+            console.log('highlighted = ' + this.highlighted);
         }
 
-        let Obj = new Post('Vachovsky', '', '26.12.2021');
-        Obj.edit();
-        Obj.AttachedPost();
+        let res = new AttachedPost('Lorem','a','text');
+        res.edit();
+        res.makeTextHighlighted();
 
-
-        /*ES6*/
+        /*ES6 1.1*/
         class Post{
-            constructor(author, text, date) {
+        constructor (author, text, date){
             this.author = author;
             this.text = text;
             this.date = date;
-            }
-            show(){
-                console.log(this.author, this.text, this.date)
-            }
-            edit(){
-                this.text += ' movie Matrix-4 ';
-                console.log(this.author, this.text, this.date)
-
-            }
+        }
+        edit(text){
+                this.text += ' long';
+                console.log(this.author, this.text, this.date);
+            }        
         }
 
+        let result = new Post('Lorem','a','text');
+            result.edit();
+
+        /*1.2*/ 
         class AttachedPost extends Post{
-            constructor(author, text, date,highlighted){
-                super(highlighted = false); 
-                this.author= author; 
-                this.text = text; 
-                this.date = date;               
-            }            
-    
-            showAttached(){
-                console.log(this.author, this.text, this.date,this.highlighted = true);
+            constructor(author, text, date, highlighted){
+                super(author, text, date);
+                this.highlighted = highlighted;
+                
             }
-        }
 
-        let Obj = new Post('Vachovsky', '', '26.12.2021');
-        Obj.show();
-        Obj.edit();
+            makeTextHighlighted(highlighted){
+                this.highlighted = true;
+                console.log('highlighted = ' + this.highlighted);
+            }
+        }       
 
-        let a = new AttachedPost('Vachovsky', '', '26.12.2021');
-        a.showAttached();
+        let res = new AttachedPost('Lorem','a','text');
+        res.edit();
+        res.makeTextHighlighted();
 
-
-        
     </script>
 </body>
 
