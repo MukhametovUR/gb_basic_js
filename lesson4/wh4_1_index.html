@@ -15,31 +15,31 @@
         function Product(name, price) {
             this.name = name;
             this.price = price;
-        }
+        };
 
-        Product.prototype.make25PercentDiscount = function(res){
-            res = this.price + this.price * 0.25;
-            console.log(this.name, res);
-        }
+        Product.prototype.make25PercentDiscount = function () {
+            this.price = this.price - (this.price * 25 / 100);
+        };
 
-        let result = new Product('Product',100);
-        result.make25PercentDiscount(); 
+        let result = new Product('Product', 100);
+        result.make25PercentDiscount();
+        console.log(result);
 
-         /*ES6*/
+        /*ES6*/
         class Product {
             constructor(name, price) {
                 this.name = name;
                 this.price = price;
 
             }
-            make25PercentDiscount(res) {
-                res = +this.price + this.price * 0.25;
-                console.log(this.name, res);
+            make25PercentDiscount() {
+                this.price = this.price - (this.price * 25 / 100);
             };
-        }
-        let result = new Product('Product',200);
-        result.make25PercentDiscount();
+        };
 
+        let result = new Product('Product', 100);
+        result.make25PercentDiscount();
+        console.log(result);
     </script>
 </body>
 
