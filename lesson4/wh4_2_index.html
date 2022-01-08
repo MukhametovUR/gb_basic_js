@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        /*ES5 1.1*/
+        function Post(author, text, date) {
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+        Post.prototype.edit = function (text) {
+            this.text = text;
+        }
+
+        /*1.2*/
+        function AttachedPost(author, text, date) {
+            Post.call(this, author, text, date);
+            this.highlighted = false;
+        }
+
+        AttachedPost.prototype = Object.create(Post.prototype);
+        AttachedPost.prototype.constructor = AttachedPost;
+
+        AttachedPost.prototype.makeTextHighlighted = function () {
+            this.highlighted = true;
+            console.log('highlighted = ' + this.highlighted);
+        }
+
+        let res = new AttachedPost('Vachovsky', 'new film', new Date());
+        console.log(res);
+        res.makeTextHighlighted();
+        res.edit('Matrix-4');
+        console.log(res);
+
+
+        /*ES6 1.1*/
+
+        class Post {
+            constructor(author, text, date) {
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+            edit(text) {
+                this.text = text;
+            }
+        }
+
+        /*1.2*/
+        class AttachedPost extends Post {
+            constructor(author, text, date) {
+                super(author, text, date);
+                this.highlighted = false;
+            }
+
+            makeTextHighlighted() {
+                this.highlighted = true;
+            }
+        }
+
+        let res = new AttachedPost('Vachovsky', 'new film', new Date());
+        console.log(res);
+        res.makeTextHighlighted();
+        res.edit('Matrix-4');
+        console.log(res);
+    </script>
+</body>
+
+</html>
