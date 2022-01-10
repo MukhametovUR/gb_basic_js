@@ -37,13 +37,21 @@
 
     <script>
         let formEl = document.querySelector('form'),
-            link1 = document.querySelector('input#first'),
-            link2 = document.querySelector('input#second');
+            input1 = document.querySelector('input#first'),
+            input2 = document.querySelector('input#second');
 
         formEl.addEventListener('submit', function(event) {
-            if(link1.value=="" || link2.value==""){
-                link1.style.borderColor ="red";
-                link2.style.borderColor ="red";
+            if(input1.value=="" && input2.value==""){
+                input1.style.borderColor ="red";
+                input2.style.borderColor ="red";
+                event.preventDefault();
+
+            }else if(input2.value==""){
+                input2.style.borderColor ="red";
+                event.preventDefault();
+            }
+            else if(input1.value==""){
+                input1.style.borderColor ="red";
                 event.preventDefault();
             }
         });

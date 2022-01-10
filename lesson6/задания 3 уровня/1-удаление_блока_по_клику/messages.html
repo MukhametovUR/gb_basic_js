@@ -46,8 +46,8 @@
     <script>
         let closes = document.querySelectorAll('button');
         closes.forEach(button => {
-            button.addEventListener('click', function closeClickHandler(event) {
-                event.currentTarget.parentNode.style = "display:none";
+            button.addEventListener('click', function (event) {
+                event.currentTarget.parentNode.style.display = "none";
             });
         });
         
