@@ -75,17 +75,28 @@ const products = {
     ],
 };
 
+let btns =document.querySelectorAll('button');
+let prod = document.querySelector('.products');
 
 /**
  * Эта функция должна вызываться при клике по кнопкам.
  * @param {MouseEvent} event
  */
+    btns.forEach(btn =>{
+        btn.addEventListener('click', clickHandler);
+    })
+
+
 function clickHandler(event) {
+     
     //вам нужно очищать содержимое .products
-    
+    if(prod.textContent !='' && prod.classList){
+        prod.textContent='';
+    }
     //в showCategory надо передать строку с типом категории, тип берите
     //из атрибута data-type у кнопки, по которой кликнули.
-    
+    let attr = event.target.getAttribute('data-type');
+    showCategory(attr);
 }
 
 /**
@@ -96,7 +107,43 @@ function clickHandler(event) {
  * по которой кликнули.
  */
 function showCategory(category) {
-    
+    switch(category){
+        case 'phones': products.phones.forEach(i => {
+                    prod.insertAdjacentHTML('afterbegin',`
+                        <div class="product">
+                        <div>${i.name}</div>
+                        <img src="${i.imageUrl}" alt="">
+                        <div>${i.price}</div>
+                        <a href="https://example.com/producs/${i.id}">Подробнее</a>
+                        </div>
+                    `);
+                });                
+            break;
+
+        case 'tablets': products.tablets.forEach(i => {
+            prod.insertAdjacentHTML('afterbegin',`
+                        <div class="product">
+                        <div>${i.name}</div>
+                        <img src="${i.imageUrl}" alt="">
+                        <div>${i.price}</div>
+                        <a href="https://example.com/producs/${i.id}">Подробнее</a>
+                        </div>
+                    `);    
+                });                
+            break;    
+                
+        case 'tv': products.tv.forEach(i => {
+            prod.insertAdjacentHTML('afterbegin',`
+                        <div class="product">
+                        <div>${i.name}</div>
+                        <img src="${i.imageUrl}" alt="">
+                        <div>${i.price}</div>
+                        <a href="https://example.com/producs/${i.id}">Подробнее</a>
+                        </div>
+                    `);    
+                });                
+            break;                
+    }
 }
 
 /**
@@ -109,5 +156,4 @@ function showCategory(category) {
  * в верху этого файла.
  */
 function getProductMarkup(product) {
-
 }

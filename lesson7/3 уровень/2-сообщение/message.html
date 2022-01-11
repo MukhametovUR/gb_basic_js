@@ -26,7 +26,20 @@
     -->
 
     <script>
+        let btn = document.querySelector('button'),
+            msg = document.querySelector('.message');
+
+        btn.addEventListener('click', function() {
+           let newtop = msg.clientHeight + 570; 
+           msg.style.top = newtop + "px";
+
+           let audioElement = new Audio('notification.mp3');
+           audioElement.play();
+        });
         
+
+      
+ 
     </script>
 </body>
 
