@@ -18,7 +18,8 @@
         let url = "https://picsum.photos/200/300";
         let targetAttr = "_blank";
         let linkText = "ссылка";
-        document.querySelector('body').insertAdjacentHTML('afterend','<a href="https://picsum.photos/200/300" target="_blank">ссылка</a>');
+        document.querySelector('body').insertAdjacentHTML('afterend',
+        `<a href=${url} target=${targetAttr}>${linkText}</a>`);
         
     </script>
 </body>

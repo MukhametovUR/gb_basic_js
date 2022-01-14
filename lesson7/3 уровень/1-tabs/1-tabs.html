@@ -36,40 +36,5 @@
     -->
     
     <script src="app.js"></script>
-    <script>
-        let navs = document.querySelectorAll('.nav-link'),
-            textEl = document.querySelector('.text');
-        
-        navs.forEach(nav => {
-            nav.addEventListener('click', clickHandler)
-        });     
-
-        function clickHandler(event) {
-                navs.forEach(el => el.classList.remove('active'));
-                    changeActiveClass(event.target);
-                    changeText(event);
-        };   
-
-        function changeActiveClass(event) {
-            if(event.target.classList !="")
-                event.classList.add('active');
-        };
-
-        function changeText(event) { 
-            console.log(event.target)
-            switch (event.target.textContent) {
-                case "Link 1":
-                    textEl.textContent = texts.text1;
-                    break;
-                case "Link 2":
-                textEl.textContent = texts.text2;
-                    break;
-                case "Link 3":
-                textEl.textContent = texts.text3;
-                    break;
-            }      
-        };
-    </script>
 </body>
-
 </html>

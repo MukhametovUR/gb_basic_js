@@ -108,40 +108,16 @@ function clickHandler(event) {
  */
 function showCategory(category) {
     switch(category){
-        case 'phones': products.phones.forEach(i => {
-                    prod.insertAdjacentHTML('afterbegin',`
-                        <div class="product">
-                        <div>${i.name}</div>
-                        <img src="${i.imageUrl}" alt="">
-                        <div>${i.price}</div>
-                        <a href="https://example.com/producs/${i.id}">Подробнее</a>
-                        </div>
-                    `);
-                });                
+        case 'phones': products.phones.forEach(i =>
+            getProductMarkup(i));               
             break;
 
-        case 'tablets': products.tablets.forEach(i => {
-            prod.insertAdjacentHTML('afterbegin',`
-                        <div class="product">
-                        <div>${i.name}</div>
-                        <img src="${i.imageUrl}" alt="">
-                        <div>${i.price}</div>
-                        <a href="https://example.com/producs/${i.id}">Подробнее</a>
-                        </div>
-                    `);    
-                });                
+        case 'tablets': products.tablets.forEach(i =>
+            getProductMarkup(i));                
             break;    
                 
-        case 'tv': products.tv.forEach(i => {
-            prod.insertAdjacentHTML('afterbegin',`
-                        <div class="product">
-                        <div>${i.name}</div>
-                        <img src="${i.imageUrl}" alt="">
-                        <div>${i.price}</div>
-                        <a href="https://example.com/producs/${i.id}">Подробнее</a>
-                        </div>
-                    `);    
-                });                
+        case 'tv': products.tv.forEach(i => 
+            getProductMarkup(i));                
             break;                
     }
 }
@@ -155,5 +131,13 @@ function showCategory(category) {
  * @returns {string} html-разметка для товара по аналогии из комментария
  * в верху этого файла.
  */
-function getProductMarkup(product) {
+function getProductMarkup(i) {
+    prod.insertAdjacentHTML('afterbegin',`
+                        <div class="product">
+                        <div>${i.name}</div>
+                        <img src="${i.imageUrl}" alt="">
+                        <div>${i.price}</div>
+                        <a href="https://example.com/producs/${i.id}">Подробнее</a>
+                        </div>
+                    `);  
 }
